@@ -7,4 +7,4 @@ RUN go install
 FROM alpine:3.15.0
 
 COPY --from=build ./../go/bin/goddes .
-CMD ./goddes
+ENTRYPOINT [ "./goddes" ]

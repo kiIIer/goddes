@@ -1,7 +1,6 @@
 package hell
 
 import (
-	"github.com/valyala/fasthttp"
 	url2 "net/url"
 	"testing"
 )
@@ -12,9 +11,8 @@ func BenchmarkRain(b *testing.B) {
 
 	client := createClient(url, gophersCount)
 	request := createRequest(url, "GET")
-	response := fasthttp.AcquireResponse()
 
 	for i := 0; i < b.N; i++ {
-		rain(request, response, client)
+		rain(request, client)
 	}
 }

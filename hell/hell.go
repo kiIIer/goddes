@@ -13,28 +13,26 @@ type Hell struct {
 	Method       string
 }
 
-func rain(request *fasthttp.Request, response *fasthttp.Response, client *fasthttp.HostClient) {
-	client.Do(request, response)
+func rain(request *fasthttp.Request, client *fasthttp.HostClient) {
+	client.Do(request, nil)
 }
 
-func gopher(r chan struct{}, wg *sync.WaitGroup, request *fasthttp.Request, response *fasthttp.Response, client *fasthttp.HostClient) {
+func gopher(r chan struct{}, wg *sync.WaitGroup, request *fasthttp.Request, client *fasthttp.HostClient) {
 	<-r
 	defer wg.Done()
 
 	time.Sleep(1 * time.Second)
 
 	for {
-		rain(request, response, client)
+		rain(request, client)
 	}
 }
 
 func prepareGophers(r chan struct{}, wg *sync.WaitGroup, request *fasthttp.Request, client *fasthttp.HostClient) {
-	response := fasthttp.AcquireResponse()
-
 	println("Preparing Gophers")
 
 	for i := 0; i < client.MaxConns; i++ {
-		go gopher(r, wg, request, response, client)
+		go gopher(r, wg, request, client)
 	}
 
 	println("Gophers ready")
