@@ -1,10 +1,6 @@
-/*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-
-*/
 package main
 
-import "github.com/kiIIer/goddos/cmd"
+import "github.com/kiIIer/goddes/cmd"
 
 func main() {
 	cmd.Execute()
