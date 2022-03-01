@@ -1,11 +1,11 @@
 # goddes
-A simple app designed to benchmark sites. It is written in go and uses fasthttp package to maximase the perfomance. Please keep in mind that request sending speed was the priority and I am just a student in KPI.
+A simple app designed to benchmark sites. It is written in go and uses fasthttp package to maximase the perfomance. Please keep in mind that request sending speed was the priority and I am just a student.
 
 # Installation
 I strongly suggest using Docker image like so:  
-`docker pull IMAGE NAME`  
+`docker pull 1563259847/goddes`  
 or (if you have go installed) use  
-`go install github.com/codesenberg/bombardier@latest`
+`go install github.com/kiIIer/goddes@latest`
 
 # Running the app
 Usage:
@@ -27,4 +27,4 @@ If you are new to all this stuff
 This will start hell on your localhost using 5000 goroutines with http get requests  
 `goddes hell --url http://localhost:80/ --gophers 5000 --method GET`  
 For docker users(this does the same thing)   
-`docker run IMAGENAME hell --url http://localhost:80/ --gophers 5000 --method GET`
+`docker run 1563259847/goddes hell --url http://localhost:80/ --gophers 5000 --method GET`
